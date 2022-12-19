@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky install",
-    "build": "npx hardhat compile",
+    "postinstall": "build",
+    "build": "npx hardhat compile && typechain --target=ethers-v5  \"./build/abis/**/*.json\" --out-dir ./../../node_modules/@contracts-sdk",
     "test": "npx hardhat test",
     "format": "prettier --write \"tests/**/*.ts\" \"tasks/**/*.ts\" \"contracts/**/*.sol\" \"deploy/**/*.ts\" \"hardhat.config.ts\"",
     "pretty-quick": "pretty-quick --staged",
@@ -27,7 +27,6 @@
     "@types/mocha": "10.0.1",
     "@types/node": "18.11.17",
     "chai": "4.3.7",
-    "dotenv": "^16.0.3",
     "env-var": "^7.3.0",
     "ethereum-waffle": "^3.4.4",
     "ethers": "5.7.2",

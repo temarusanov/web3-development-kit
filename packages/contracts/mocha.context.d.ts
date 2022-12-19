@@ -1,5 +1,5 @@
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers"
-import { ERC20Mock } from "./build/typechain"
+import { ERC20Mock } from "@contracts-sdk"
 
 declare module "mocha" {
     export interface Context {

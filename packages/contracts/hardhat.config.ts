@@ -3,7 +3,6 @@ import { HardhatUserConfig } from "hardhat/types"
 import "@nomiclabs/hardhat-waffle"
 import "@nomiclabs/hardhat-ethers"
 import "hardhat-deploy"
-import "@typechain/hardhat"
 import "hardhat-abi-exporter"
 import "@nomiclabs/hardhat-etherscan"
 import "@openzeppelin/hardhat-upgrades"
@@ -31,9 +30,6 @@ const config: HardhatUserConfig = {
         artifacts: "./build/artifacts",
         cache: "./build/cache",
         deployments: "./build/deployments",
-    },
-    typechain: {
-        outDir: "./sdk",
     },
     gasReporter: {
         currency: "USD",
