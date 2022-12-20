@@ -1,11 +1,10 @@
 {
   "name": "contracts",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "postinstall": "build",
-    "build": "npx hardhat compile && typechain --target=ethers-v5  \"./build/abis/**/*.json\" --out-dir ./../../node_modules/@contracts-sdk",
+    "postinstall": "yarn build",
+    "build": "npx hardhat compile && eth-sdk -p ./sdk",
     "test": "npx hardhat test",
     "format": "prettier --write \"tests/**/*.ts\" \"tasks/**/*.ts\" \"contracts/**/*.sol\" \"deploy/**/*.ts\" \"hardhat.config.ts\"",
     "pretty-quick": "pretty-quick --staged",
@@ -14,6 +13,8 @@
     "export": "hardhat --network ethereum export --export deployments/ethereum.json"
   },
   "devDependencies": {
+    "@dethcrypto/eth-sdk": "^0.3.3",
+    "@dethcrypto/eth-sdk-client": "^0.1.6",
     "@nomiclabs/buidler": "1.4.8",
     "@nomiclabs/hardhat-ethers": "2.2.1",
     "@nomiclabs/hardhat-etherscan": "3.1.3",

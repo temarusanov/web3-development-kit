@@ -10,6 +10,10 @@ import "solidity-coverage"
 import "hardhat-gas-reporter"
 import "./tasks"
 
+const accounts = {
+    mnemonic: get('MNEMONIC').default('test test test test test test test test test test test junk').required().asString()
+}
+
 const config: HardhatUserConfig = {
     defaultNetwork: "hardhat",
     solidity: {
@@ -45,29 +49,22 @@ const config: HardhatUserConfig = {
             url: "http://127.0.0.1:8545",
         },
         ethereum: {
-            url: get('NODE_URL').required().asUrlString(),
-            accounts: {
-                mnemonic: get('MNEMONIC').required().asString(),
-            },
+            url: get('NODE_URL').default("http://127.0.0.1:8545").required().asUrlString(),
             chainId: 1,
+            accounts,
+            
         },
         goerli: {
-            url: get('NODE_URL').required().asUrlString(),
-            accounts: {
-                mnemonic: get('MNEMONIC').required().asString(),
-            },
+            url: get('NODE_URL').default("http://127.0.0.1:8545").required().asUrlString(),
+            accounts,
         },
         avalanche: {
             url: get('NODE_URL').default("https://api.avax.network/ext/bc/C/rpc").required().asUrlString(),
-            accounts: {
-                mnemonic: get('MNEMONIC').required().asString(),
-            },
+            accounts,
         },
         fuji: {
             url: get('NODE_URL').default("https://api.avax-test.network/ext/bc/C/rpc").required().asUrlString(),
-            accounts: {
-                mnemonic: get('MNEMONIC').required().asString(),
-            },
+            accounts,
         },
     },
     namedAccounts: {
